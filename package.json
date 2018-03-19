@@ -1,0 +1,37 @@
+{
+  "name": "timestamp-util",
+  "version": "1.0.0",
+  "description": "API to handle various timestamp and/or date conversions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N1rium/timestamp-util.git"
+  },
+  "keywords": [
+    "timestamp",
+    "date",
+    "js",
+    "javascript",
+    "convert",
+    "cast",
+    "milliseconds",
+    "to",
+    "date"
+  ],
+  "author": "Johnny Blomgren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N1rium/timestamp-util/issues"
+  },
+  "homepage": "https://github.com/N1rium/timestamp-util#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "moment": "^2.21.0"
+  }
+}
