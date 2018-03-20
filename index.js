@@ -2,33 +2,28 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const moment = require('moment');
-const { getCalculatedString } = require('./util');
-const math = require('mathjs');
+const { timestampFromDate, dateFromTimestamp, evaulatedDateObj } = require('./util');
 
-app.use(bodyParser.json(), allowCorsMiddleware);
+app.use(bodyParser.json(), allowCorsMiddleware, analyticsMiddleware);
 
 app.get('/api/v1/timestamp/:date', getTimestampFromDate);
 app.get('/api/v1/date/:timestamp', getDateFromTimestamp);
 app.get('/api/v1/calc/:value', getCalculatedDate);
 
+
 function getTimestampFromDate(req, res) {
-  const date = new Date(moment(req.params.date)).getTime();
+  const date = timestampFromDate(req.params.date);
   return res.status(200).send(date.toString());
 }
 
 function getDateFromTimestamp(req, res) {
-  const timestamp = moment(Number(req.params.timestamp)).format("YYYY-MM-DD HH:mm:ss");
+  const timestamp = dateFromTimestamp(req.params.timestamp);
   return res.status(200).send(timestamp.toString());
 }
 
 function getCalculatedDate(req, res) {
-  const str = getCalculatedString(req.query.text || req.params.value);
-  const evaluated = math.eval(str);
-  return res.status(200).json({
-    timestamp: evaluated,
-    date: moment(Number(evaluated)).format("YYYY-MM-DD HH:mm:ss")
-  });
+  const obj = evaulatedDateObj(req.query.text || req.params.value);
+  return res.status(200).json(obj);
 }
 
 const port = process.env.PORT || 3000;
