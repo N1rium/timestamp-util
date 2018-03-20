@@ -23,7 +23,7 @@ function getDateFromTimestamp(req, res) {
 }
 
 function getCalculatedDate(req, res) {
-  const str = getCalculatedString(req.params.value);
+  const str = getCalculatedString(req.query.text || req.params.value);
   const evaluated = math.eval(str);
   return res.status(200).json({
     timestamp: evaluated,
