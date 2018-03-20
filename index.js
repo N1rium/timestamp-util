@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const moment = require('moment');
 const { getCalculatedString } = require('./util');
+const math = require('mathjs');
 
 app.use(bodyParser.json(), allowCorsMiddleware);
 
@@ -23,7 +24,7 @@ function getDateFromTimestamp(req, res) {
 
 function getCalculatedDate(req, res) {
   const str = getCalculatedString(req.params.value);
-  const evaluated = eval(str);
+  const evaluated = math.eval(str);
   return res.status(200).json({
     timestamp: evaluated,
     date: moment(Number(evaluated)).format("YYYY-MM-DD HH:mm:ss")
