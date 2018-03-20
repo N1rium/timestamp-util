@@ -1,5 +1,5 @@
 {
-  "name": "timestamp-util",
+  "name": "timestamp-utility",
   "version": "1.0.0",
   "description": "API to handle various timestamp and/or date conversions",
   "main": "index.js",
