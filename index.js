@@ -8,6 +8,7 @@ app.use(bodyParser.json(), allowCorsMiddleware);
 
 app.get('/api/v1/timestamp/:date', getTimestampFromDate);
 app.get('/api/v1/date/:timestamp', getDateFromTimestamp);
+app.get('/api/v1/calc/:value', getCalculatedDate);
 
 function getTimestampFromDate(req, res) {
   const date = new Date(moment(req.params.date)).getTime();
@@ -17,6 +18,14 @@ function getTimestampFromDate(req, res) {
 function getDateFromTimestamp(req, res) {
   const timestamp = moment(Number(req.params.timestamp)).format("YYYY-MM-DD HH:mm:ss");
   return res.status(200).send(timestamp.toString());
+}
+
+function getCalculatedDate(req, res) {
+  const evaluated = eval(req.params.value);
+  return res.status(200).json({
+    timestamp: evaluated,
+    date: moment(Number(evaluated)).format("YYYY-MM-DD HH:mm:ss")
+  });
 }
 
 const port = process.env.PORT || 3000;
