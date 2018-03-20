@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const { timestampFromDate, dateFromTimestamp, evaulatedDateObj } = require('./util');
 
-app.use(bodyParser.json(), allowCorsMiddleware, analyticsMiddleware);
+app.use(bodyParser.json(), allowCorsMiddleware);
 
 app.get('/api/v1/timestamp/:date', getTimestampFromDate);
 app.get('/api/v1/date/:timestamp', getDateFromTimestamp);
