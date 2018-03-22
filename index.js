@@ -9,6 +9,7 @@ app.use(bodyParser.json(), allowCorsMiddleware);
 app.get('/api/v1/timestamp/:date', getTimestampFromDate);
 app.get('/api/v1/date/:timestamp', getDateFromTimestamp);
 app.get('/api/v1/calc/:value', getCalculatedDate);
+app.get('/api/v1/slack/:value', (req, res) => res.status(200).json(evaulatedDateObj(req.query.text)));
 
 
 function getTimestampFromDate(req, res) {
@@ -22,7 +23,7 @@ function getDateFromTimestamp(req, res) {
 }
 
 function getCalculatedDate(req, res) {
-  const obj = evaulatedDateObj(req.query.text || req.params.value);
+  const obj = evaulatedDateObj(req.params.value);
   return res.status(200).json(obj);
 }
 
