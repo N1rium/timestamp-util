@@ -8,7 +8,7 @@ API to handle dates and timestamp conversions
   * timestamp to date conversion
   * date to timestamp conversion
   * timestamp + date object from mathematically evaluated expressions using [mathjs](https://www.npmjs.com/package/mathjs)
-  * slack slash command ready with mathematically evaluated expressions
+  * slack slash command ready with mathematically evaluated expressions
 
 ## Quick Start
 The fastest way to get timestamp-util up and running is to simply run the start command
