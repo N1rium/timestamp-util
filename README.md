@@ -17,15 +17,17 @@ $ npm run start
 ```
 To launch the [Express](https://www.npmjs.com/package/express) server and navigate to:
 ```
-http://localhost:3000/api/v1/timestamp/1989-06-15%2012:00:00
+http://localhost:3000
 ```
-And you should be presented with a timestamp similar to:
+And you should be presented with a JSON object similar to:
 ```
-613908000000
+{
+    "timestamp": 1521879441885,
+    "date": "2018-03-24 09:17:21"
+}
 ```
 
-## 
-Timestamp to date conversion
+## Timestamp to date conversion
 Simply converts a given timestamp to a date.
 ```
 http://localhost:3000/api/v1/date/1521821170061
@@ -94,3 +96,6 @@ now * 2                      | 3043646895558 | 2066-06-13 10:28:15
 365d + 48h                   | 31708800000   | 1971-01-03 01:00:00
 now + 1d - 60s + 25ms * 2    | 1521909976637 | 2018-03-24 17:46:16
 ```
+
+## A working example
+timestamp-util is hosted on [Heroku](https://www.heroku.com/) and is using the GitHub deployment method so it is directly connected to this repository. Simply visit https://timestamp-util.herokuapp.com to expreiment with the different features.
