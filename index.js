@@ -10,6 +10,9 @@ app.get('/api/v1/timestamp/:date', getTimestampFromDate);
 app.get('/api/v1/date/:timestamp', getDateFromTimestamp);
 app.get('/api/v1/calc/:value', getCalculatedDate);
 app.get('/api/v1/slack/:value', (req, res) => res.status(200).json(evaulatedDateObj(req.query.text)));
+app.get('*',function (req, res) {
+  res.redirect('/api/v1/calc/now');
+});
 
 
 function getTimestampFromDate(req, res) {
