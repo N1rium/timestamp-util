@@ -97,5 +97,16 @@ now * 2                      | 3043646895558 | 2066-06-13 10:28:15
 now + 1d - 60s + 25ms * 2    | 1521909976637 | 2018-03-24 17:46:16
 ```
 
+## Slack slash command
+There is a path `/slack/:value` which is specifically made to communicate with [Slacks](https://slack.com/) slash command and basically runs the same logic as `/calc` making it easy to generate timestamps and dates without even incorporating your browser. If you create your own slash command, simply hook it up to the following URL (as a `GET` method):
+```
+yourdomain/api/v1/slack/value
+```
+If you for instance chose `/ts` as the command syntax all you have to write in any [Slack](https://slack.com/) channel is:
+```
+/ts now + 10m
+```
+To retrive the calculated timestamp + date JSON response.
+
 ## A working example
 timestamp-util is hosted on [Heroku](https://www.heroku.com/) and is using the GitHub deployment method so it is directly connected to this repository. Simply visit https://timestamp-util.herokuapp.com to expreiment with the different features.
